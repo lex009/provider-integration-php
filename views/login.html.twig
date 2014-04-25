@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="logo">
+        <img src="/images/logo.png" width="150">
+    </div>
+    <form class="form-signin" role="form" action="{{ path('authorization_login_check') ~ '?' ~ app.request.queryString }}" method="post">
+        <h2 class="form-signin-heading">Авторизация</h2>
+        {% if error %}<p>{{ error }}</p>{% endif %}
+        <input type="text" class="form-control" placeholder="Логин" name="_username" required="" autofocus="">
+        <input type="password" class="form-control" placeholder="Пароль" name="_password" required="">
+        <input type="hidden" name="_target_path" value="/authorization?{{ app.request.queryString }}" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+    </form>
+{% endblock %}

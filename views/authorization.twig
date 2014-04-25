@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="header">
+            <h2>Авторизовать приложение?</h2>
+            <p>Приложение demoapp будет иметь доступ к вашим подпискам.</p>
+        </div>
+        <div class="button-form">
+            <form action="{{ path('authorize_post') ~ '?' ~ app.request.queryString }}" method="post">
+                <input type="submit" class="button authorize btn btn-primary" value="Да, авторизовать приложение" />
+                <input type="hidden" name="authorize" value="1" />
+            </form>
+        </div>
+        <div class="button-form">
+             <form id="cancel" action="{{ path('authorize_post') ~ '?' ~ app.request.queryString }}" method="post">
+                <a href="#" class="btn btn-default" onclick="document.getElementById('cancel').submit()">Отменить</a>
+                <input type="hidden" name="authorize" value="0" />
+             </form>
+        </div>
+    </div>
+{% endblock %}

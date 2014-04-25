@@ -1,0 +1,22 @@
+{
+    "name": "vendor_name/package_name",
+    "require": {
+        "bshaffer/oauth2-server-php": "dev-master",
+        "bshaffer/oauth2-server-httpfoundation-bridge": "v1.0",
+        "silex/silex": "~1.1",
+        "symfony/twig-bridge": "2.1.*",
+        "symfony/form": "~2.3",
+        "symfony/locale": "~2.3",
+        "symfony/validator": "~2.3",
+        "symfony/config": "~2.3",
+        "symfony/translation": "~2.3",
+        "symfony/security": "~2.3",
+        "doctrine/dbal": "2.3.4"
+    },
+    "autoload" : {
+        "psr-0": {
+            "OAuth2Integration": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
