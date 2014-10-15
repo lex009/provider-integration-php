@@ -14,6 +14,24 @@ class ResourceController
     static public function addRoutes($routing)
     {
         $routing->get('/profile', array(new self(), 'profileAction'))->bind('profile');
+        $routing->get('/user', array(new self(), 'userAction'))->bind('user');
+    }
+
+    public function userAction(Application $app)
+    {
+        $server = $app['oauth_server'];
+        $response = $app['oauth_response'];
+
+        if (!$server->verifyResourceRequest($app['request'], $response)) {
+            return $server->getResponse();
+        }
+
+        $token = $server->getAccessTokenData($app['request']);
+        $username = $token['user_id'];
+
+        return new JsonResponse(array(
+            'username' => $username,
+        ));
     }
 
     public function profileAction(Application $app)
